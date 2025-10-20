@@ -1,0 +1,22 @@
+{
+    "application_title": "Application Name",
+    "application_dir": "{{ cookiecutter.application_title.lower()|replace(' ', '-')|replace('_', '-') }}",
+    "package_name": "{{ cookiecutter.application_dir.lower()|replace(' ', '_')|replace('-', '_') }}",
+    "name_prefix": "{{ cookiecutter.package_name|title|replace(' ', '') }}",
+    "description": "",
+    "open_source_license": ["MIT", "BSD", "GPLv3", "Apache Software License 2.0", "Not open source"],
+
+    "author": "HOPE Team",
+    "author_email": "hope@unicef.org",
+    "github_user": "unicef",
+    "github_repo": "{{ cookiecutter.application_title.lower()|replace(' ', '-')|replace('_', '-') }}",
+
+    "python_version": ["3.13", "3.14"],
+    "min_python_version": "{{ cookiecutter.python_version }}",
+
+    "postgresql_version": ["15", "14"],
+    "database_name": "{{ cookiecutter.package_name }}",
+    "_copy_without_render": [
+      "src/{{cookiecutter.package_name}}/web/theme/static/js/*.js"
+    ]
+}

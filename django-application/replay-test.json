@@ -1,9 +1,9 @@
 {
   "cookiecutter": {
-    "project_title": "Django Project Sample",
-    "project_dir": "django-project-sample",
-    "package_name": "django_project_sample",
-    "name_prefix": "django_project_sample",
+    "application_title": "Django Project Sample",
+    "application_dir": "django-application-sample",
+    "package_name": "django_application_sample",
+    "name_prefix": "django_application_sample",
     "description": "",
     "open_source_license": "MIT",
     "author": "HOPE Team",
@@ -18,9 +18,6 @@
     "use_celery": "y",
     "use_sentry_for_error_reporting": "y",
     "use_pycharm": "y",
-    "use_docker": "y",
-    "docker_organization": "unicef",
-    "docker_image": "django-project-sample",
     "_copy_without_render": [
       "src/{{cookiecutter.package_name}}/web/theme/static/js/*.js"
     ]

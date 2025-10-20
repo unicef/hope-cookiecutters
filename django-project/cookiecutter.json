@@ -1,0 +1,31 @@
+{
+    "project_title": "Project Name",
+    "project_dir": "{{ cookiecutter.project_title.lower()|replace(' ', '-')|replace('_', '-') }}",
+    "package_name": "{{ cookiecutter.project_dir.lower()|replace(' ', '_')|replace('-', '_') }}",
+    "name_prefix": "{{ cookiecutter.package_name|title|replace(' ', '') }}",
+    "description": "",
+    "open_source_license": ["MIT", "BSD", "GPLv3", "Apache Software License 2.0", "Not open source"],
+
+    "author": "HOPE Team",
+    "author_email": "hope@unicef.org",
+    "github_user": "unicef",
+    "github_repo": "{{ cookiecutter.project_title.lower()|replace(' ', '-')|replace('_', '-') }}",
+
+    "python_version": ["3.13", "3.14"],
+    "min_python_version": "{{ cookiecutter.python_version }}",
+
+    "postgresql_version": ["15", "14"],
+    "database_name": "{{ cookiecutter.package_name }}",
+
+    "timezone": "UTC",
+    "use_celery": "y",
+    "use_sentry_for_error_reporting": "y",
+    "use_pycharm": "y",
+
+    "use_docker": "y",
+    "docker_organization": "unicef",
+    "docker_image": "{{ cookiecutter.project_title.lower()|replace(' ', '-')|replace('_', '-') }}",
+    "_copy_without_render": [
+      "src/{{cookiecutter.package_name}}/web/theme/static/js/*.js"
+    ]
+}

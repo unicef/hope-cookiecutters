@@ -1,0 +1,3 @@
+# Python-generated files
+!{{cookiecutter.project_dir}}/**/*
+{{cookiecutter.project_dir}}/**/*.pyc

@@ -1,0 +1,17 @@
+.*
+~*
+!.dockerignore
+!.dockerignoredo
+!.git
+!.python-version
+!.github/
+!.gitignore
+!.pre-commit-config.yaml
+
+!tests/.coveragerc
+!docs/**/.pages
+
+src/{{cookiecutter.package_name}}/version.py
+
+node_modules/
+dist/

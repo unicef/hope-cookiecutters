@@ -6,9 +6,9 @@ build/
 dist/
 wheels/
 
-!django-project-library/{{cookiecutter.application_dir}}/.idea/**
-!django-application/{{cookiecutter.project_dir}}/.idea/**
-!python-library/{{cookiecutter.application_dir}}/.idea/**
+!django-project-library/{{cookiecutter.application_dir}}/.idea
+!django-application/{{cookiecutter.project_dir}}/.idea
+!python-library/{{cookiecutter.application_dir}}/.idea
 
 # Virtual environments
 .venv

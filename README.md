@@ -13,7 +13,7 @@ Each templated is into its own `TEMPLATE_FOLDER`
 
 ```bash
     
-    cookiecutter gh:unicef/hope-cookiecutters  --directory <TEMPLATE_FOLDER>
+    cookiecutter gh:unicef/hope-cookiecutters  --directory <TEMPLATE_FOLDER> --output-dir <my-projects-dir>
     
 ```
 

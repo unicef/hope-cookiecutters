@@ -1,0 +1,21 @@
+[importlinter]
+root_package = {{ cookiecutter.package_name }}
+exclude_type_checking_imports = True
+include_external_packages = True
+
+
+[importlinter:contract:1]
+name = Models must not import Views or Forms
+type = layers
+containers =
+    {{ cookiecutter.package_name }}
+layers =
+    views
+    forms
+    models
+exhaustive = false
+exhaustive_ignores =
+    apps
+    migrations
+    version
+    config

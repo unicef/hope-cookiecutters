@@ -1,0 +1,22 @@
+{
+  "cookiecutter": {
+    "application_title": "Django Project Sample",
+    "application_dir": "python-library-sample",
+    "package_name": "python_library_sample",
+    "name_prefix": "python_library_sample",
+    "description": "",
+    "open_source_license": "MIT",
+    "author": "HOPE Team",
+    "author_email": "hope@unicef.org",
+    "github_user": "unicef",
+    "github_repo": "python-library-sample",
+    "python_version": "3.13",
+    "min_python_version": "3.13",
+    "postgresql_version": "15",
+    "timezone": "UTC",
+    "use_sentry_for_error_reporting": "y",
+    "use_pycharm": "y",
+    "_copy_without_render": [
+    ]
+  }
+}

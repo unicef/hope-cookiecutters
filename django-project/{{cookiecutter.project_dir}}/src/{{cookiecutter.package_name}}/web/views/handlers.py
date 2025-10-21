@@ -35,7 +35,7 @@ def handler403(request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         "code": 403,
         "title": "Forbidden",
         "settings": settings,
-        "referer": request.META.get("HTTP_REFERER", "/"),
+        "referer": request.META.get("referer", "/"),
         "description": "The client has insufficient authentication credentials for the server to process this request.",
     }
     if exc:

@@ -1,43 +1,69 @@
-# Contributing
+# How to Contribute
 
+Always happy to get issues identified and pull requests!
 
-Install [uv](https://docs.astral.sh/uv/)
+## General considerations
 
+1. Keep it small. The smaller the change, the more likely we are to accept.
+2. Changes that fix a current issue get priority for review.
+3. Check out [GitHub guide][submit-a-pr] if you've never created a pull request before.
 
-    git clone https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.github_repo}}
-    uv venv .venv --python 3.12
-    source .venv/bin/activate
-    uv sync --all-extras
-    pre-commit install --hook-type pre-commit --hook-type pre-push
+## Getting started
 
+1. Fork the repo
+2. Clone your fork
+3. Create a branch for your changes
 
-## Run tests
+This last step is very important, don't start developing from main, it'll cause pain if you need to send another change later.
 
-    pytests tests
+## Testing
 
-## Run Selenium tests (ONLY)
+You'll need to run the tests using Python 3.13. We recommend using [tox](https://tox.readthedocs.io/en/latest/) to run the tests. It will automatically create a fresh virtual environment and install our test dependencies, such as [pytest-cookies](https://pypi.python.org/pypi/pytest-cookies/) and [flake8](https://pypi.python.org/pypi/flake8/).
 
-    pytests tests -m selenium
+We'll also run the tests on GitHub actions when you send your pull request, but it's a good idea to run them locally before you send it.
 
+### Installation
 
-## Run Selenium any tests
+We use uv to manage our environment and manage our Python installation. You can install it following the instructions at https://docs.astral.sh/uv/getting-started/installation/
 
-    pytests tests --selenium
+### Run the template's test suite
 
+To run the tests of the template using the current Python version:
 
-## Run local server
+```bash
+$ uv run tox run -e py
+```
 
+This uses `pytest `under the hood, and you can pass options to it after a `--`. So to run a particular test:
 
-    ./manage.py runserver
+```bash
+$ uv run tox run -e py -- -k test_default_configuration
+```
 
+For further information, please consult the [pytest usage docs](https://pytest.org/en/latest/how-to/usage.html#specifying-which-tests-to-run).
 
+### Run the generated project tests
 
-## Docker compose
+The template tests are checking that the generated project is fully rendered and that it passes `flake8`. We also have some test scripts which generate a specific project combination, install the dependencies, run the tests of the generated project, install FE dependencies and generate the docs. They will install the template dependencies, so make sure you create and activate a virtual environment first.
 
-Alternatively you can use provided docker compose for development
+```bash
+$ python -m venv venv
+$ source venv/bin/activate
+```
 
-    docker compose up
+These tests are slower and can be run with or without Docker:
 
-Alternatively you can use provided docker compose for development
+- Without Docker: `tests/test_bare.sh` (for bare metal)
+- With Docker: `tests/test_docker.sh`
 
-    docker compose up
+All arguments to these scripts will be passed to the `cookiecutter` CLI, letting you set options, for example:
+
+```bash
+$ tests/test_bare.sh use_celery=y
+```
+
+## Submitting a pull request
+
+Once you're happy with your changes and they look ok locally, push and send [a pull request][submit-a-pr] to the main repo, which will trigger the tests on GitHub actions. If they fail, try to fix them. A maintainer should take a look at your change and give you feedback or merge it.
+
+[submit-a-pr]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request

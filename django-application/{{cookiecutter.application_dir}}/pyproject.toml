@@ -7,7 +7,7 @@ requires = [
 
 [project]
 name = "{{cookiecutter.application_dir}}"
-description = "A project for streaming data."
+description = ""
 readme = "README.md"
 authors = [
   { name = "Stefano Apostolico", email = "s.apostolico@gmail.com" },
@@ -16,7 +16,6 @@ requires-python = ">={{cookiecutter.python_version}}"
 classifiers = [
   "Environment :: Web Environment",
   "Framework :: Django",
-  "Framework :: Django :: 3.2",
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.2",
   "Intended Audience :: Developers",
@@ -31,7 +30,6 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "django>=3",
 ]
 
 urls.Documentation = "https://unicef.github.io/{{cookiecutter.application_dir}}/"
@@ -43,6 +41,7 @@ urls.Repository = "https://github.com/{{cookiecutter.application_title}}/{{cooki
 dev = [
   "django-webtest>=1.9.13",
   "factory-boy>=3.3.3",
+  "import-linter>=2.5",
   "pre-commit>=3.3.3",
   "pyrabbit2>=1.0.7",
   "pytest>=8.4.1",

@@ -4,10 +4,13 @@ dist
 build
 uv.lock
 src/{{cookiecutter.package_name}}/version.py
+junit.xml
+coverage.xml
 
 !.github/
 !.pre-commit-config.yaml
 !.gitignore
 !.idea
+!.importlinter
 !tests/.coveragerc
 !docs/**/.pages

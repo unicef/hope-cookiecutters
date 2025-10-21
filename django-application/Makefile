@@ -9,7 +9,7 @@ clean:
 	@rm -fr ${WORKDIR}/*
 
 
-build: clean
+build:
 	@echo "Creating project in ${PROJECT_DIR}"
 
 	@cookiecutter . \
@@ -18,11 +18,5 @@ build: clean
 		--output-dir ${WORKDIR} \
 		--keep-project-on-failure
 
-
 test:
-#	@cd ${PROJECT_DIR} && .venv/bin/pre-commit run --all-files
-#	@cd ${PROJECT_DIR} && .venv/bin/tox -e lint,pkg_meta,type-d52,docs,d52-py313
-#	@cd ${PROJECT_DIR} && .venv/bin/tox -e lint
-#	cd ${PROJECT_DIR} && .venv/bin/tox -e mypy
-#	cd ${PROJECT_DIR} && .venv/bin/tox -e docs
-	@cd ${PROJECT_DIR} && .venv/bin/tox -e d52-py313
+	cd ${PROJECT_DIR} && .venv/bin/tox -q

@@ -1,0 +1,18 @@
+{
+    "application_title": "Library Name",
+    "application_dir": "{{ cookiecutter.application_title.lower()|replace(' ', '-')|replace('_', '-') }}",
+    "package_name": "{{ cookiecutter.application_dir.lower()|replace(' ', '_')|replace('-', '_') }}",
+    "name_prefix": "{{ cookiecutter.package_name|title|replace(' ', '') }}",
+    "description": "",
+
+    "author": "HOPE Team",
+    "author_email": "hope@unicef.org",
+    "github_user": "unicef",
+    "github_repo": "{{ cookiecutter.application_title.lower()|replace(' ', '-')|replace('_', '-') }}",
+
+    "python_version": ["3.13", "3.14"],
+    "min_python_version": "{{ cookiecutter.python_version }}",
+
+    "_copy_without_render": [
+    ]
+}

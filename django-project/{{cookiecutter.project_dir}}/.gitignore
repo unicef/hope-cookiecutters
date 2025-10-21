@@ -13,6 +13,8 @@
 !tests/.coveragerc
 !docs/**/.pages
 
+junit.xml
+coverage.xml
 src/{{cookiecutter.package_name}}/version.py
 
 node_modules/

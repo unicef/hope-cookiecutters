@@ -1,10 +1,14 @@
 # Python-generated files
 __pycache__/
 *.py[oc]
+*.egg-info
 build/
 dist/
 wheels/
-*.egg-info
+
+!django-project-library/{{cookiecutter.application_dir}}/.idea/**
+!django-application/{{cookiecutter.project_dir}}/.idea/**
+!python-library/{{cookiecutter.application_dir}}/.idea/**
 
 # Virtual environments
 .venv

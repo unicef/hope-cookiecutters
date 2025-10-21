@@ -17,8 +17,8 @@ def run(*cmd: str):
                                      "PYTHONPATH": f"{os.getcwd()}/src/:",
                                      "DJANGO_SETTINGS_MODULE": f"{{ cookiecutter.package_name}}.config.settings",
                                      },
-#                                capture_output=True,
-#                                check=True,
+                                capture_output=True,
+                                check=True,
                                 text=True,
                                 )
         if result.returncode != 0:
@@ -40,20 +40,21 @@ def run_manage(*args):
 def main():
     print(f"{SUCCESS}Project structure created in {os.getcwd()}.{TERMINATOR}")
     print(f"{SUCCESS}Start setup project.{TERMINATOR}")
-    print(f"{INFO}.. Initializing git. Creating main/develop branches.{TERMINATOR}")
-    run("git", "init", "--initial-branch", "main")
-    run("git", "checkout", "-b", "develop")
-
-    print(f"{INFO}.. Generating uv.lock file.{TERMINATOR}")
-    run("uv", "lock", "-q")
 
     print(f"{INFO}.. Setup .gitignore and .envrc files.{TERMINATOR}")
     run("mv", "_.gitignore", ".gitignore")
     run("mv", "_.envrc", ".envrc")
 
+    print(f"{INFO}.. Initializing git. Creating main/develop branches.{TERMINATOR}")
+    run("git", "init", "--initial-branch", "main")
+    run("git", "checkout", "-b", "develop")
+
     print(f"{INFO}.. Creating virtualenv.{TERMINATOR}")
-    run("uv", "venv", "-q")
+    run("uv", "venv", "-q", "--clear")
     run("uv", "sync", "-q")
+
+    print(f"{INFO}.. Generating uv.lock file.{TERMINATOR}")
+    run("uv", "lock", "-q")
 
     print(f"{INFO}.. Setup tailwind.{TERMINATOR}")
     run_manage("tailwind", "--no-input", "-v0", "install")

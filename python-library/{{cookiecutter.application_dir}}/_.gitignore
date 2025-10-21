@@ -1,0 +1,13 @@
+~*
+.*
+dist
+build
+uv.lock
+src/{{cookiecutter.package_name}}/version.py
+
+!.github/
+!.pre-commit-config.yaml
+!.gitignore
+!.idea
+!tests/.coveragerc
+!docs/**/.pages

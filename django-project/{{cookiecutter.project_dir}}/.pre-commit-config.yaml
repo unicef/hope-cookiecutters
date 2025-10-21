@@ -18,6 +18,11 @@ repos:
     -   id: djade
         args: [--target-version, "5.1"]  # Use current Django version
 
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: '1.29.0'
+    hooks:
+      - id: django-upgrade
+        args: ['--target-version', '5.2']
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
     rev: "1.6.0"

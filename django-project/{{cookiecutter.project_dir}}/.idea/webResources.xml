@@ -6,6 +6,7 @@
         <entryData>
           <resourceRoots>
             <path value="file://$PROJECT_DIR$/{{ cookiecutter.package_name }}/web/static" />
+            <path value="file://$PROJECT_DIR$/{{ cookiecutter.package_name }}/web/theme/static" />
           </resourceRoots>
         </entryData>
       </entry>

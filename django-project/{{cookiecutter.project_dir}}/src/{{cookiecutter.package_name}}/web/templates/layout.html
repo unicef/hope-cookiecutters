@@ -1,5 +1,5 @@
 {% load issues static tailwind_tags %}
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
     <head>
         <meta charset="UTF-8" />
         <meta name="lang"  content="en" />
@@ -20,7 +20,6 @@
         {% block page %}
             <div class="flex flex-row">
                 {% block menu %}
-                    {% include "menu.html" %}
                 {% endblock menu %}
                 <div class="w-full">
                     {% block content %}

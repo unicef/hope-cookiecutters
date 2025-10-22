@@ -1,19 +1,18 @@
 import logging
 from pathlib import Path
 
-from django.utils.translation import gettext_lazy as _
-
 from . import logging_conf, env  # noqa
 
 logger = logging.getLogger(__name__)
 
 PACKAGE_DIR = Path(__file__).parent.parent  # {{cookiecutter.package_name}}/
-BITCASTER_DIR = PACKAGE_DIR  # backward compatibility - needed by plugins
 SOURCE_DIR = PACKAGE_DIR.parent  # src/
 PROJECT_DIR = SOURCE_DIR.parent
 ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     # Default Django apps:
+    "{{cookiecutter.package_name}}.apps.Config",
+    "{{cookiecutter.package_name}}.api",
     "{{cookiecutter.package_name}}.web.theme",
     "{{cookiecutter.package_name}}.web",
     "unfold",  # before django.contrib.admin
@@ -46,16 +45,15 @@ INSTALLED_APPS = [
     "constance",
     "constance.backends.database",
     "flags",
+    "smart_env",
     "debug_toolbar",
     "django_regex",
     "admin_extra_buttons",
     "adminfilters",
+    "adminactions",
     "social_django",
     "tailwind",
     "issues",
-    # Admin
-    "{{cookiecutter.package_name}}",
-    "{{cookiecutter.package_name}}.api",
     *env("EXTRA_APPS"),
 ]
 
@@ -108,10 +106,17 @@ MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "social_django.middleware.SocialAuthExceptionMiddleware",
+    *env("EXTRA_MIDDLEWARES"),
 ]
+SECRET_KEY = env("SECRET_KEY")
 
 AUTH_USER_MODEL = "{{cookiecutter.package_name}}.user"
-SECRET_KEY = env("SECRET_KEY")
+
+AUTHENTICATION_BACKENDS = (
+    "social_core.backends.azuread_tenant.AzureADTenantOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+    *env("EXTRA_AUTHENTICATION_BACKENDS"),
+)
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_NAME = "{{cookiecutter.package_name}}id"
@@ -153,11 +158,14 @@ TIME_ZONE = env("TIME_ZONE")
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#GUAguage-code
 LANGUAGE_CODE = "en-us"
 LANGUAGE_COOKIE_NAME = "language"
+ugettext = lambda s: s
 LANGUAGES = (
-    ("en", _("English")),
-    ("fr", _("French")),
-    ("it", _("Italian")),
+    ("es", ugettext("Spanish")),
+    ("fr", ugettext("French")),
+    ("en", ugettext("English")),
+    ("ar", ugettext("Arabic")),
 )
+
 LOCALE_PATHS = (str(PACKAGE_DIR / "LOCALE"),)
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
@@ -204,7 +212,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "social_django.context_processors.backends",
                 "social_django.context_processors.login_redirect",
-                # Your stuff: custom template context processors go here
+                "{{cookiecutter.package_name}}.web.context_processors.app",
             ],
         },
     },
@@ -215,8 +223,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = "DENY"
 
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
+
+CSRF_COOKIE_NAME = env("CSRF_COOKIE_NAME")
+CSRF_COOKIE_SECURE = env("CSRF_COOKIE_SECURE")
+SESSION_COOKIE_SECURE = env("SESSION_COOKIE_SECURE")
 SECURE_SSL_REDIRECT = False
 
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
@@ -236,11 +246,6 @@ STATIC_ROOT = env.str("STATIC_ROOT")
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = f"/{URL_PREFIX}static/"
-
-# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [
-    str(BITCASTER_DIR / "web" / "static"),
-]
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
@@ -298,9 +303,11 @@ CACHES = {
 }
 
 TSDB_STORE = env("REDIS_TSDB_URL")
-# AUTHENTICATION CONFIGURATION
-# ------------------------------------------------------------------------------
-AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",)
+STORAGES = {
+    "default": env.storage("FILE_STORAGE_DEFAULT"),
+    "staticfiles": env.storage("FILE_STORAGE_STATIC"),
+    "media": env.storage("FILE_STORAGE_MEDIA"),
+}
 
 # Custom user app defaults
 # Select the correct user model

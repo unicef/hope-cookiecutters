@@ -1,6 +1,6 @@
 import os
 
-level = os.environ.get("BITCASTER_LOG_LEVEL", "ERROR").upper()
+level = os.environ.get("LOG_LEVEL", "ERROR").upper()
 
 LOGGING = {
     "default_level": "INFO",

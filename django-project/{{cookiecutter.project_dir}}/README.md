@@ -7,3 +7,25 @@
 [![Documentation](https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_dir}}/actions/workflows/docs.yml/badge.svg)](https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.project_dir}}/)
 [![Pypi](https://badge.fury.io/py/{{cookiecutter.github_user}}-{{cookiecutter.project_dir}}.svg)](https://badge.fury.io/py/{{cookiecutter.github_user}}-{{cookiecutter.project_dir}})
 [![Docker Pulls](https://img.shields.io/docker/pulls/{{cookiecutter.github_user}}/{{cookiecutter.project_dir}})](https://hub.docker.com/repository/docker/{{cookiecutter.github_user}}/{{cookiecutter.project_dir}}/tags)
+
+## Contributing
+
+### Requirements
+
+- [uv](https://docs.astral.sh/uv/)
+- [direnv](https://direnv.net/)
+
+### Checkout and configure development environment
+
+```shell
+
+    git checkout https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.github_repo}}.git
+    cd {{cookiecutter.github_repo}}
+    uv venv .venv
+    uv sync
+
+    ./manage.py env --develop > .envrc  # create initial development configuration
+    direnv allow .  # enable enviroment
+    createdb {{ cookiecutter.database_name }}  # create postgres database on localhost
+
+```

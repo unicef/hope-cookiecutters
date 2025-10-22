@@ -3,26 +3,34 @@
 {% block menu %}
 {% endblock menu %}
 {% block page %}
-    <div class="flex flex-col justify-center items-center">
+    {% if config.LOGIN_LOCAL %}
         <form method="post">
-            {% csrf_token %}
-            <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-                <legend class="fieldset-legend">
-                    Login
-                </legend>
-                <label class="label">
-                    {{ form.username.label }}
-                </label>
-                <input type="text" class="input" placeholder="email address" name="{{ form.username.name }}" />
-                <label class="label">
-                    Password
-                </label>
-                <input type="password" class="input" placeholder="your password" name="{{ form.password.name }}" />
-            </fieldset>
-            <input type="submit" class="btn btn-primary m-auto" value="Login" />
+            <div class="flex flex-col justify-center items-center">
+                {% csrf_token %}
+                <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                    <legend class="fieldset-legend">
+                        Login
+                    </legend>
+                    <label class="label">
+                        {{ form.username.label }}
+                    </label>
+                    <input type="text" class="input" placeholder="email address" name="{{ form.username.name }}" />
+                    <label class="label">
+                        Password
+                    </label>
+                    <input type="password" class="input" placeholder="your password" name="{{ form.password.name }}" />
+                    <div class="m-auto">
+                        <input type="submit" class="btn btn-primary m-auto" value="Login" />
+                    </div>
+                </fieldset>
+            </div>
         </form>
-        <div class="m-10">
-            <a class="btn btn-primary" href="{% url 'social:begin azuread-tenant-oauth2' %}">Login with Azure</a>
+    {% endif %}
+    {% if config.LOGIN_SSO %}
+        <div class="flex flex-col justify-center items-center my-10">
+            <div class="m-auto">
+                <a class="btn btn-primary" href="{% url "social:begin" "azuread-tenant-oauth2" %}">Login with Azure</a>
+            </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock page %}

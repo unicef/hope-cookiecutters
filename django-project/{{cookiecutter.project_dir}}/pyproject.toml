@@ -59,6 +59,7 @@ urls.Repository = "https://github.com/{{cookiecutter.project_title}}/{{cookiecut
 [dependency-groups]
 dev = [
   "coverage",
+  "django-browser-reload",
   "django-regex",
   "django-webtest>=1.9.13",
   "djlint",

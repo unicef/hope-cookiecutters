@@ -2,6 +2,8 @@ from .celery import *  # noqa
 from .constance import *  # noqa
 from .cors import *  # noqa
 from .csp import *  # noqa
+from .flags import *  # noqa
+from .mail import *  # noqa
 from .debug_toolbar import *  # noqa
 from .rest_framework import *  # noqa
 from .sentry import *  # noqa

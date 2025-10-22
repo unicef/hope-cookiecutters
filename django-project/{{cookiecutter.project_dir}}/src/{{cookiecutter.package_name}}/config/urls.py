@@ -15,17 +15,25 @@ urlpatterns = [
     path("api/schema/swagger-ui/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path("api/", include("{{cookiecutter.package_name}}.api.urls"), name="api"),
-    path("issues/", include("issues.urls")),
     path("favicon.ico", serve, kwargs={"document_root": settings.STATIC_ROOT, "path": "favicon.ico"}),
     path("admin/", site.urls),
+    path("social/", include("social_django.urls", namespace="social")),
+    path("issues/", include("issues.urls")),
+    path("adminactions/", include("adminactions.urls")),
     path("", include("{{cookiecutter.package_name}}.web.urls")),
 ]
 
 if settings.DEBUG:
-    import debug_toolbar
+    if "debug_toolbar.middleware.DebugToolbarMiddleware" in settings.MIDDLEWARE:
+        import debug_toolbar
 
-    urlpatterns = [
-        path(r"__debug__/", include(debug_toolbar.urls)),
-    ] + urlpatterns
+        urlpatterns = [
+            path(r"__debug__/", include(debug_toolbar.urls)),
+        ] + urlpatterns
+
+    if "django_browser_reload.middleware.BrowserReloadMiddleware" in settings.MIDDLEWARE:
+        urlpatterns += [
+            path("__reload__/", include("django_browser_reload.urls")),
+        ]
 
 urlpatterns = [path(settings.URL_PREFIX, include(urlpatterns))]  # type: ignore[arg-type]

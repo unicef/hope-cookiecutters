@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse
 
 
 class HomeView(TemplateView):
-    template_name = "home.html"
+    template_name = "pages/index.html"
 
 
 class HealthCheckView(View):

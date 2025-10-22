@@ -16,10 +16,6 @@
     "database_name": "django_project_sample",
     "timezone": "UTC",
     "use_celery": "y",
-    "use_sentry_for_error_reporting": "y",
-    "use_pycharm": "y",
-    "_copy_without_render": [
-      "src/{{cookiecutter.package_name}}/web/theme/static/js/*.js"
-    ]
+    "use_sentry_for_error_reporting": "y"
   }
 }

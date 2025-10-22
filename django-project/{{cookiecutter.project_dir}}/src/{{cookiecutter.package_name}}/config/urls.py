@@ -15,6 +15,7 @@ urlpatterns = [
     path("api/schema/swagger-ui/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path("api/", include("{{cookiecutter.package_name}}.api.urls"), name="api"),
+    path("issues/", include("issues.urls")),
     path("favicon.ico", serve, kwargs={"document_root": settings.STATIC_ROOT, "path": "favicon.ico"}),
     path("admin/", site.urls),
     path("", include("{{cookiecutter.package_name}}.web.urls")),

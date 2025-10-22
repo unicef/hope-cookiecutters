@@ -17,6 +17,6 @@
     "postgresql_version": ["15", "14"],
     "database_name": "{{ cookiecutter.package_name }}",
     "_copy_without_render": [
-      "src/{{cookiecutter.package_name}}/web/theme/static/js/*.js"
+
     ]
 }

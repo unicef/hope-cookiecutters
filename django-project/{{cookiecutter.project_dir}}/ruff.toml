@@ -81,5 +81,5 @@ line-ending = "auto"
 [lint.per-file-ignores]
 "docs/**.py" = ["TC002", "U"]
 "tests/**.py" = ["S101", "PLR2004", "S", "SIM117", "D", "UP", "PLR0913", "ANN", "N999", "PT006", "PLC0415", "TC002"]
-"src/**/migrations/*.py" = ["E501", ]
+"src/{{cookiecutter.package_name}}/migrations/*.py" = ["ALL", ]
 "src/{{cookiecutter.package_name}}/version.py" = ["ALL", ]

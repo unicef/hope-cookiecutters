@@ -26,6 +26,7 @@
     "docker_organization": "unicef",
     "docker_image": "{{ cookiecutter.project_title.lower()|replace(' ', '-')|replace('_', '-') }}",
     "_copy_without_render": [
-      "src/{{cookiecutter.package_name}}/web/theme/static/js/*.js"
+      "src/{{cookiecutter.package_name}}/web/theme/static/js/*.js",
+      "src/{{cookiecutter.package_name}}/web/templates/*.html"
     ]
 }

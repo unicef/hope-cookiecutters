@@ -20,9 +20,6 @@
     "use_pycharm": "y",
     "use_docker": "y",
     "docker_organization": "unicef",
-    "docker_image": "django-project-sample",
-    "_copy_without_render": [
-      "src/{{cookiecutter.package_name}}/web/theme/static/js/*.js"
-    ]
+    "docker_image": "django-project-sample"
   }
 }

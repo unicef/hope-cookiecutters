@@ -15,8 +15,6 @@
     "postgresql_version": "15",
     "timezone": "UTC",
     "use_sentry_for_error_reporting": "y",
-    "use_pycharm": "y",
-    "_copy_without_render": [
-    ]
+    "use_pycharm": "y"
   }
 }

@@ -20,5 +20,5 @@ build:
 
 
 test:
-	@cd ${PROJECT_DIR} && .venv/bin/tox -q
+	@cd ${PROJECT_DIR} && .venv/bin/tox
 	@cd ${PROJECT_DIR} && .venv/bin/python manage.py check

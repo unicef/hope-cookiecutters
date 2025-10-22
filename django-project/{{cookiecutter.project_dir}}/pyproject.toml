@@ -49,6 +49,7 @@ dependencies = [
   "pytz",
   "sentry-sdk",
   "social-auth-app-django",
+  "unicef-security",
 ]
 urls.Documentation = "https://unicef.github.io/{{cookiecutter.project_dir}}/"
 urls.Homepage = "https://github.com/{{cookiecutter.project_title}}/{{cookiecutter.project_dir}}"

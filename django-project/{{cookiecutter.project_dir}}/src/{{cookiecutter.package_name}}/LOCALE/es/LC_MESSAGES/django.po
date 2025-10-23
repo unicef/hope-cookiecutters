@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-23 09:45+0000\n"
+"POT-Creation-Date: 2025-10-23 09:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,12 +36,14 @@ msgid "Arabic"
 msgstr "Árabe"
 
 #: src/django_project_sample/ui/templates/admin/base_site.html:6
-msgid "Django site admin"
-msgstr "Administración del sitio de Django"
+#, fuzzy
+#| msgid "Django site admin"
+msgid "Site admin"
+msgstr "Administración del sitio"
 
 #: src/django_project_sample/ui/templates/errors/403.html:15
 msgid "Forbidden"
-msgstr ""
+msgstr "Prohibido"
 
 #: src/django_project_sample/ui/templates/errors/403.html:18
 #: src/django_project_sample/ui/templates/errors/404.html:16
@@ -54,12 +56,12 @@ msgstr "Volver"
 #: src/django_project_sample/ui/templates/errors/404.html:13
 #: src/django_project_sample/ui/templates/errors/500.html:13
 msgid "Object Not Found or you do not have permissions to access it"
-msgstr ""
+msgstr "Objeto no encontrado o no tienes permisos para acceder a él"
 
 #: src/django_project_sample/ui/templates/includes/footer.html:8
 #, python-format
 msgid "Copyright © %(year)s - All right reserved by UNICEF"
-msgstr ""
+msgstr "Copyright © %(year)s - Todos los derechos reservados por UNICEF"
 
 #: src/django_project_sample/ui/templates/unfold/helpers/header_back_button.html:5
 #: src/django_project_sample/ui/templates/unfold/helpers/header_back_button.html:10
@@ -68,8 +70,10 @@ msgstr "Volver"
 
 #: src/django_project_sample/ui/templates/unfold/helpers/site_branding.html:3
 #: src/django_project_sample/ui/templates/unfold/helpers/site_branding.html:5
-msgid "Django administration"
-msgstr "Administración de Django"
+#, fuzzy
+#| msgid "Django administration"
+msgid "Administration"
+msgstr "Administración"
 
 #: src/django_project_sample/ui/templates/unfold/helpers/site_icon.html:12
 #: src/django_project_sample/ui/templates/unfold/helpers/site_icon.html:13

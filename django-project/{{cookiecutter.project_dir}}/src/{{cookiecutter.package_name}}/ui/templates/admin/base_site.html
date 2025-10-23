@@ -3,7 +3,7 @@
     {% if subtitle %}
         {{ subtitle }} |
     {% endif %}
-    {{ title }} | {{ site_title|default:_("Django site admin") }}
+    {{ title }} | {{ site_title|default:_("Site admin") }}
 {% endblock title %}
 {% block branding %}
     {% include "unfold/helpers/site_branding.html" %}

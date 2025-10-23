@@ -10,7 +10,7 @@ SOURCE_DIR = PACKAGE_DIR.parent  # src/
 PROJECT_DIR = SOURCE_DIR.parent
 ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
-    # Default Django apps:
+    # Default apps:
     "{{cookiecutter.package_name}}.apps.Config",
     "{{cookiecutter.package_name}}.api",
     "{{cookiecutter.package_name}}.ui.theme",

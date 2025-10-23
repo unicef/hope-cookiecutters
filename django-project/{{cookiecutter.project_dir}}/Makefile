@@ -40,7 +40,7 @@ i18n:  ## update translation files
 reset_migrations:  ## reset database migrations. WARNING!!: Use only until first deployment
 	rm -f src/{{cookiecutter.package_name}}/migrations/0002*
 	dropdb --if-exists {{cookiecutter.database_name}}
-	createdb birder
+	createdb {{cookiecutter.database_name}}
 	./manage.py makemigrations {{cookiecutter.package_name}}
 	git add src/{{cookiecutter.package_name}}/migrations/*
-	./manage.py demo
+	./manage.py develop

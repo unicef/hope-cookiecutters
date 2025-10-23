@@ -19,9 +19,9 @@ build:
 		--keep-project-on-failure
 
 test:
-	@cd ${PROJECT_DIR} && .venv/bin/tox
-	@cd ${PROJECT_DIR} && .venv/bin/python manage.py check
-	@cd ${PROJECT_DIR} && .venv/bin/python manage.py develop
+	@cd ${PROJECT_DIR} && .venv/bin/tox -r
+	@cd ${PROJECT_DIR} && ADMIN_EMAIL= ADMIN_PASSWORD= ALLOWED_HOSTS= .venv/bin/python manage.py check
+	@cd ${PROJECT_DIR} && DEBUG=1 .venv/bin/python manage.py develop
 
 
 i18n: build

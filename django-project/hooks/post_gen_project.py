@@ -52,7 +52,7 @@ def main():
     run("git", "checkout", "-b", "develop")
 
     print(f"{INFO}.. Creating virtualenv.{TERMINATOR}")
-    run("uv", "venv", "-q", "--clear")
+    run("uv", "venv", "-q")
     run("uv", "sync", "-q")
 
     print(f"{INFO}.. Generating uv.lock file.{TERMINATOR}")
@@ -66,6 +66,10 @@ def main():
 
     print(f"{INFO}.. Add files to git.{TERMINATOR}")
     run("git", "add", ".")
+
+
+    print(f"{INFO}.. Update translations.{TERMINATOR}")
+    run_manage("compilemessages")
 
     print(f"{INFO}.. Run final check.{TERMINATOR}")
     run_manage("check")

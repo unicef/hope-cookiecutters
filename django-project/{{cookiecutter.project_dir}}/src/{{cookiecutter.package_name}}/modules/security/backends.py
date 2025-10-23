@@ -18,13 +18,13 @@ class AnyUserAuthBackend(ModelBackend):
     ) -> "AbstractBaseUser | None":
         if settings.DEBUG:
             if username in ["admin", "superuser", "administrator", "sax"]:
-                user, __ = get_user_model().objects.update_or_create(
+                user, __ = get_user_model().objects.update_or_create(  # type: ignore[attr-defined]
                     username=username,
                     defaults={"is_staff": True, "is_active": True, "is_superuser": True},
                 )
                 return user
             if username in ["staff"]:
-                user, __ = get_user_model().objects.update_or_create(
+                user, __ = get_user_model().objects.update_or_create(  # type: ignore[attr-defined]
                     username=username,
                     defaults={"is_staff": True, "is_active": True, "is_superuser": False},
                 )

@@ -34,7 +34,7 @@ dependencies = [
   "django-debug-toolbar",
   "django-filter",
   "django-flags",
-  "django-online-issues[github]",
+  "django-online-issues[github]>=0.6",
   "django-redis",
   "django-regex",
   "django-smart-env",

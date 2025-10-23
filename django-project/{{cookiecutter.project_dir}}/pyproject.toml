@@ -75,6 +75,7 @@ dev = [
   "ruff",
   "seleniumbase",
   "tox>=4.2",
+  "transifex-python",
 ]
 
 docs = [
@@ -134,7 +135,7 @@ include = [
 ]
 exclude = [
   "~*",
-  "src/{{cookiecutter.package_name}}/web/theme/static_src/**/*.*",
+  "src/{{cookiecutter.package_name}}/ui/theme/static_src/**/*.*",
 ]
 
 [tool.hatch.build.targets.wheel]

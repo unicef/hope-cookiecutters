@@ -1,3 +1,5 @@
 # Python-generated files
 !{{cookiecutter.project_dir}}/**/*
 {{cookiecutter.project_dir}}/**/*.pyc
+
+{{cookiecutter.project_dir}}/**/LOCALE/**/*.mo

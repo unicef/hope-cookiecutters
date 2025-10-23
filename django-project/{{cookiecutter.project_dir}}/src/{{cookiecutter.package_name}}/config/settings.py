@@ -13,8 +13,9 @@ INSTALLED_APPS = [
     # Default Django apps:
     "{{cookiecutter.package_name}}.apps.Config",
     "{{cookiecutter.package_name}}.api",
-    "{{cookiecutter.package_name}}.web.theme",
-    "{{cookiecutter.package_name}}.web",
+    "{{cookiecutter.package_name}}.ui.theme",
+    "{{cookiecutter.package_name}}.ui",
+    "{{cookiecutter.package_name}}.modules.security",
     "unfold",  # before django.contrib.admin
     "unfold.contrib.filters",  # optional, if special filters are needed
     "unfold.contrib.forms",  # optional, if special form elements are needed
@@ -189,7 +190,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
         "DIRS": [
-            str(PACKAGE_DIR / "web/templates"),
+            str(PACKAGE_DIR / "ui/templates"),
         ],
         "OPTIONS": {
             # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
@@ -212,7 +213,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "social_django.context_processors.backends",
                 "social_django.context_processors.login_redirect",
-                "{{cookiecutter.package_name}}.web.context_processors.app",
+                "{{cookiecutter.package_name}}.ui.context_processors.app",
             ],
         },
     },

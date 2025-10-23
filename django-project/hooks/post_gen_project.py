@@ -12,21 +12,23 @@ SUCCESS = "\x1b[1;32m [SUCCESS]: "
 
 def run(*cmd: str):
     try:
-        result = subprocess.run(cmd,
-                                env={"PATH": f"{os.getcwd()}/.venv/bin/:{os.environ['PATH']}",
-                                     "PYTHONPATH": f"{os.getcwd()}/src/:",
-                                     "DJANGO_SETTINGS_MODULE": f"{{ cookiecutter.package_name}}.config.settings",
-                                     },
-                                capture_output=True,
-                                check=True,
-                                text=True,
-                                )
-        if result.returncode != 0:
-            print(f"❌ Command failed with exit code {result.returncode}", file=sys.stderr)
-            print(f"Command failed with exit code {result.returncode}")
-            sys.exit(result.returncode)
+        subprocess.run(cmd,
+                       env={"PATH": f"{os.getcwd()}/.venv/bin/:{os.environ['PATH']}",
+                            "PYTHONPATH": f"{os.getcwd()}/src/:",
+                            "DJANGO_SETTINGS_MODULE": f"{{ cookiecutter.package_name}}.config.settings",
+                            "ADMIN_EMAIL": "",
+                            "ADMIN_PASSWORD": "",
+                            "ALLOWED_HOSTS": ""
+                            },
+                       capture_output=True,
+                       check=True,
+                       text=True,
+                       )
     except subprocess.CalledProcessError as e:
-        print(str(e))
+        print(f"❌ Error executing {e.cmd} ", file=sys.stderr)
+        print(f"Exit code {e.returncode}", file=sys.stderr)
+        print(f"{e.stderr}")
+        sys.exit(e.returncode)
 
 
 def run_venv(*cmd: str):
@@ -60,7 +62,7 @@ def main():
     run_manage("tailwind", "--no-input", "-v0", "install")
     print(f"{INFO}.. Installing pre-commit hooks.{TERMINATOR}")
     run_venv(f"{os.getcwd()}/.venv/bin/pre-commit", "install")
-    subprocess.call(["touch", *glob("src/{{ cookiecutter.package_name}}/web/theme/static/js/*.min.js")])
+    subprocess.call(["touch", *glob("src/{{ cookiecutter.package_name}}/ui/theme/static/js/*.min.js")])
 
     print(f"{INFO}.. Add files to git.{TERMINATOR}")
     run("git", "add", ".")
@@ -69,7 +71,6 @@ def main():
     run_manage("check")
 
     print(f"{SUCCESS}Project setup completed.{TERMINATOR}")
-
 
 
 if __name__ == "__main__":

@@ -10,18 +10,11 @@ type = layers
 containers =
     {{ cookiecutter.package_name }}
 layers =
-    __cli__
-    security
+    utils
+    api
     admin
-    web
-    theme
+    ui
+    modules
     models
     utils
-    ws
-    storage
 exhaustive = false
-exhaustive_ignores =
-    apps
-    migrations
-    version
-    config

@@ -9,10 +9,6 @@ def is_simple(obj: Any) -> bool:
     return not hasattr(obj, "__dict__")
 
 
-def parse_bool(value: Any) -> bool:
-    return str(value).lower() in ["1", "true", "yes", "y", "t", "on"]
-
-
 def flatten(x: list[Any]) -> list[Any]:
     result = []
     for el in x:

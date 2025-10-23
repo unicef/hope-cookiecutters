@@ -13,3 +13,6 @@ build:
 	@cd django-application && make build
 	@cd django-project && make build
 	@cd python-library && make build
+
+i18n:
+	@cd django-project && make i18n

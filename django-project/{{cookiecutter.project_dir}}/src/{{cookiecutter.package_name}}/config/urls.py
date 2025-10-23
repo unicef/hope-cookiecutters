@@ -5,10 +5,10 @@ from django.urls import path
 from django.views.static import serve
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
-handler400 = "{{cookiecutter.package_name}}.web.views.handler400"
-handler403 = "{{cookiecutter.package_name}}.web.views.handler403"
-handler404 = "{{cookiecutter.package_name}}.web.views.handler404"
-handler500 = "{{cookiecutter.package_name}}.web.views.handler500"
+handler400 = "{{cookiecutter.package_name}}.ui.views.handler400"
+handler403 = "{{cookiecutter.package_name}}.ui.views.handler403"
+handler404 = "{{cookiecutter.package_name}}.ui.views.handler404"
+handler500 = "{{cookiecutter.package_name}}.ui.views.handler500"
 
 urlpatterns = [
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
@@ -19,8 +19,9 @@ urlpatterns = [
     path("admin/", site.urls),
     path("social/", include("social_django.urls", namespace="social")),
     path("issues/", include("issues.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
     path("adminactions/", include("adminactions.urls")),
-    path("", include("{{cookiecutter.package_name}}.web.urls")),
+    path("", include("{{cookiecutter.package_name}}.ui.urls")),
 ]
 
 if settings.DEBUG:

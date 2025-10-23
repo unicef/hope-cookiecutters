@@ -60,10 +60,10 @@ repos:
 
       - id: check-tailwind
         name: check tailwind CSS ready for production
-        files: src/{{cookiecutter.package_name}}/web/theme/static_src/src/styles.scss
+        files: src/{{cookiecutter.package_name}}/ui/theme/static_src/src/styles.scss
         args:
           - -o
-          - src/{{cookiecutter.package_name}}/web/theme/static/css/styles.css
+          - src/{{cookiecutter.package_name}}/ui/theme/static/css/styles.css
 
       - id: check-minimized
         name: check missing minimized javascript
@@ -71,7 +71,7 @@ repos:
         exclude: (\.min\.js)$
         args:
           - -i
-          - "src/{{cookiecutter.package_name}}/web/theme/static_src/*.js"
+          - "src/{{cookiecutter.package_name}}/ui/theme/static_src/*.js"
 
       - id: check-forbidden
         name: check pyproject to avoid editable sources/deps

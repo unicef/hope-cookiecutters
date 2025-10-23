@@ -1,6 +1,6 @@
 import pytest
 
-from {{cookiecutter.package_name}}.utils.language import flatten, get_attr, is_simple, parse_bool
+from {{cookiecutter.package_name}}.utils.language import flatten, get_attr, is_simple
 
 
 def test_get_attr():
@@ -19,21 +19,6 @@ def test_get_attr():
 
 def test_is_simple():
     return is_simple(pytest)
-
-
-@pytest.mark.parametrize(
-    ["value", "expected"],
-    [
-        (1, True),
-        ("1", True),
-        ("y", True),
-        ("t", True),
-        ("yes", True),
-        ("true", True),
-    ],
-)
-def test_parse_bool(value, expected):
-    assert parse_bool(value) == expected
 
 
 @pytest.mark.parametrize(

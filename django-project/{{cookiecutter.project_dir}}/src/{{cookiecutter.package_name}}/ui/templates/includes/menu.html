@@ -67,7 +67,7 @@
             </li>
             <li>
                 {% if request.user.is_authenticated %}
-                    <form id="form-logout" action="{% url 'web:logout' %}" method="post">
+                    <form id="form-logout" action="{% url 'ui:logout' %}" method="post">
                         {% csrf_token %}
                         <a href="#" onclick="document.getElementById('form-logout').submit()">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -81,7 +81,7 @@
                         </a>
                     </form>
                 {% else %}
-                    <form id="form-login" action="{% url 'web:login' %}" method="post">
+                    <form id="form-login" action="{% url 'ui:login' %}" method="post">
                         {% csrf_token %}
                         <a href="#" onclick="document.getElementById('form-login').submit()">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"

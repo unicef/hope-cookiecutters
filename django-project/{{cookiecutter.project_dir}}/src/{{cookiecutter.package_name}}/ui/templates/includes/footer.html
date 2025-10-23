@@ -1,0 +1,11 @@
+{% load i18n %}
+<footer class="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+    <nav class="grid grid-flow-col gap-4">
+        <a class="link link-hover" href="{% url 'ui:index' %}">About us</a>
+        <a class="link link-hover" href="{% url 'ui:index' %}">Contact</a>
+    </nav>
+    <div>
+        {% blocktranslate %}Copyright © {{ year }} - All right reserved by UNICEF{% endblocktranslate %} - {{ app.version }}
+    </div>
+    {% include "includes/_language_switch.html" %}
+</footer>

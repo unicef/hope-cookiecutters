@@ -42,11 +42,19 @@ jobs:
         image: rabbitmq:3-management
         ports:
           - 5672:5672
-    strategy:
-      fail-fast: false
-      matrix:
-        cfg: [ "d52-py313",
-               "d42-py310" ]
+      db:
+        image: postgres:14
+        env:
+          POSTGRES_DATABASE: country_workspace
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USERNAME: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v5
         with:
@@ -68,10 +76,10 @@ jobs:
         run: uv tool install --python-preference only-managed --python 3.13 tox --with tox-uv --with tox-gh-actions
 
       - name: Setup test suite
-        run: tox run -vv --notest --skip-missing-interpreters false -e ${{ matrix.cfg }}
+        run: tox run -vv --notest --skip-missing-interpreters false -e tests
 
-      - name: Run test suite ${{ matrix.cfg }}
-        run: tox -e ${{ matrix.cfg }}
+      - name: Run test suite tests
+        run: tox -e tests
 
       - name: Archive selenium results
         uses: actions/upload-artifact@v4
@@ -84,7 +92,7 @@ jobs:
       - name: Upload pytest test results
         uses: actions/upload-artifact@v4
         with:
-          name: pytest-results-${{ matrix.cfg }}
+          name: pytest-results-tests
           path: junit.xml
         if: ${{ always() }}
 

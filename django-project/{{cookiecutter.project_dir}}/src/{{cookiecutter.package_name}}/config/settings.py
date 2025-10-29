@@ -120,7 +120,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
-SESSION_COOKIE_NAME = "{{cookiecutter.package_name}}id"
+SESSION_COOKIE_NAME = "{{cookiecutter.package_name}}_id"
 SESSION_SERIALIZER = "django.contrib.sessions.serializers.JSONSerializer"
 # DEBUG
 # ------------------------------------------------------------------------------

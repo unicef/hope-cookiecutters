@@ -40,7 +40,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/src/{{ cookiecutter.package_name }}/web/templates" />
+        <option value="$MODULE_DIR$/src/{{ cookiecutter.package_name }}/ui/templates" />
       </list>
     </option>
   </component>

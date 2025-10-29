@@ -22,3 +22,4 @@ def pytest_configure(config):
     from django.conf import settings
 
     settings.CACHE_PREFIX = str(time.time())
+    settings.CSRF_COOKIE_SECURE = False

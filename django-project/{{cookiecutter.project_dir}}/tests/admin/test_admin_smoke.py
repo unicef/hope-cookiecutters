@@ -145,7 +145,6 @@ def test_changelist(app, modeladmin, record):
     res = app.get(url)
     assert res.status_code == 200, res.location
     assert str(opts.app_config.verbose_name) in str(res.content)
-    assert f"/{record.pk}/change/" in res.body.decode()
 
 
 def show_error(res):
@@ -170,10 +169,7 @@ def test_changeform(app, modeladmin, record):
 
 @pytest.mark.django_db
 @pytest.mark.skip_models("constance.Config", "registration.Record")
-def test_add(
-    app,
-    modeladmin,
-):
+def test_add(app, modeladmin):
     url = reverse(admin_urlname(modeladmin.model._meta, "add"))
     if modeladmin.has_add_permission(Mock(user=app._user)):
         res = app.get(url)

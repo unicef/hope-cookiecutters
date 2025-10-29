@@ -17,6 +17,7 @@ requires-python = ">={{cookiecutter.python_version}}"
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
 ]
 dynamic = [
   "version",

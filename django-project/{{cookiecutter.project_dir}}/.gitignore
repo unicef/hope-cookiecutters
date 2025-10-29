@@ -16,6 +16,9 @@
 junit.xml
 coverage.xml
 src/{{cookiecutter.package_name}}/version.py
+src/{{cookiecutter.package_name}}/static
+
+*.egg-info
 
 node_modules/
 dist/

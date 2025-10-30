@@ -1,4 +1,4 @@
-copyright: Copyright &copy; 2020-2024 {{cookiecutter.author}}.
+copyright: Copyright &copy; {{copyright_year}} {{cookiecutter.author}}.
 dev_addr: 127.0.0.1:8001
 docs_dir: docs/src
 edit_uri: 'blob/develop/docs/'

@@ -71,6 +71,7 @@ plugins:
   - search
   - gen-files:
       scripts:
+        - docs/_scripts/copy_logos.py
         - docs/_scripts/get_settings.py
 watch:
   - src/

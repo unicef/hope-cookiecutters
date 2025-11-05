@@ -1,4 +1,5 @@
 import os
+import shutil
 import subprocess
 import sys
 from glob import glob
@@ -9,6 +10,11 @@ INFO = "\x1b[1;33m [INFO]: "
 HINT = "\x1b[3;33m"
 SUCCESS = "\x1b[1;32m [SUCCESS]: "
 
+def remove(filepath):
+    if os.path.isfile(filepath):
+        os.remove(filepath)
+    elif os.path.isdir(filepath):
+        shutil.rmtree(filepath)
 
 def run(*cmd: str):
     try:
@@ -42,6 +48,8 @@ def run_manage(*args):
 def main():
     print(f"{SUCCESS}Project structure created in {os.getcwd()}.{TERMINATOR}")
     print(f"{SUCCESS}Start setup project.{TERMINATOR}")
+    if "{{cookiecutter.use_transifex}}" != "y":
+        remove(".tx")
 
     print(f"{INFO}.. Setup .gitignore and .envrc files.{TERMINATOR}")
     run("mv", "_.gitignore", ".gitignore")
@@ -75,6 +83,7 @@ def main():
     run_manage("check")
 
     print(f"{SUCCESS}Project setup completed.{TERMINATOR}")
+
 
 
 if __name__ == "__main__":

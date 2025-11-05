@@ -8,6 +8,12 @@
 [![Pypi](https://badge.fury.io/py/{{cookiecutter.github_user}}-{{cookiecutter.project_dir}}.svg)](https://badge.fury.io/py/{{cookiecutter.github_user}}-{{cookiecutter.project_dir}})
 [![Docker Pulls](https://img.shields.io/docker/pulls/{{cookiecutter.github_user}}/{{cookiecutter.project_dir}})](https://hub.docker.com/repository/docker/{{cookiecutter.github_user}}/{{cookiecutter.project_dir}}/tags)
 
+{% if cookiecutter.use_transifex == "y" %}
+## Translations
+
+You can contribute to the Portal translation at https://app.transifex.com/{{cookiecutter.transifex_organization}}/{{cookiecutter.transifex_project}}/dashboard/
+{% endif %}
+
 ## Contributing
 
 ### Requirements

@@ -20,6 +20,9 @@
     "use_pycharm": "y",
     "use_docker": "y",
     "docker_organization": "unicef",
-    "docker_image": "django-project-sample"
+    "docker_image": "django-project-sample",
+    "use_transifex": "Y",
+    "transifex_organization": "unicef-hope",
+    "transifex_project": "django-project-sample"
   }
 }

@@ -1,12 +1,11 @@
 {% load issues static tailwind_tags %}
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="{{ theme.mode }}" data-size="{{ theme.size }}">
     <head>
         <meta charset="UTF-8" />
         <meta name="lang"  content="en" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>HOPE Dashboard</title>
-        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+        <title>HOPE Portal</title>
+        <script src="{% static 'js/js.cookie.min.js' %}"></script>
         <script src="{% static 'js/theme.min.js' %}"></script>
         {% tailwind_css %}
         {% issues_tags %}
@@ -14,8 +13,12 @@
         {% block extra_head %}
         {% endblock extra_head %}
     </head>
-    <body data-timeout="{{ LOGOUT_TIMEOUT_MS|default:300000 }}" data-logout-url="{% url 'ui:logout' %}">
-        {% include "includes/header.html" %}
+    <body class="lang-{{ LANGUAGE_CODE }}"
+          data-timeout="{{ LOGOUT_TIMEOUT_MS|default:300000 }}"
+          data-logout-url="{% url 'ui:logout' %}">
+        {% block header %}
+            {% include "includes/header.html" %}
+        {% endblock header %}
         {% block page %}
             <div class="flex flex-row">
                 {% block menu %}

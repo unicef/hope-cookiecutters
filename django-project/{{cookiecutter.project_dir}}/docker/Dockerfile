@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bookworm AS base_os
+FROM python:{{ cookiecutter.python_version }}-slim AS base_os
 ARG VERSION
 ARG GIT_SHA
 ARG BUILD_DATE

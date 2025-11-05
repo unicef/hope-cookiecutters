@@ -1,0 +1,8 @@
+[main]
+host = https://app.transifex.com
+
+[o:unicef-hope:p:{{ cookiecutter.project_dir }}:r:django_po]
+file_filter = src/{{ cookiecutter.package_name }}/LOCALE/<lang>/LC_MESSAGES/django.po
+source_file = src/{{ cookiecutter.package_name }}/LOCALE/<lang>/LC_MESSAGES/django.po
+source_lang = en
+type = PO

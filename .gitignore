@@ -7,9 +7,11 @@ dist/
 wheels/
 **/LOCALE/**/*.mo
 
-!django-project-library/{{cookiecutter.application_dir}}/.idea
-!django-application/{{cookiecutter.project_dir}}/.idea
-!python-library/{{cookiecutter.application_dir}}/.idea
+#!django-project/{{cookiecutter.application_dir}}/.idea
+#!django-project/{{cookiecutter.application_dir}}/.tx
+#!django-project/{{cookiecutter.application_dir}}/.sem
+#!django-application/{{cookiecutter.project_dir}}/.idea
+#!python-library/{{cookiecutter.application_dir}}/.idea
 
 # Virtual environments
 .venv

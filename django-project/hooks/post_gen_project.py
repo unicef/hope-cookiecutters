@@ -67,7 +67,7 @@ def main():
     run("uv", "lock", "-q")
 
     print(f"{INFO}.. Setup tailwind.{TERMINATOR}")
-    run_manage("tailwind", "--no-input", "-v0", "install")
+    run_manage("tailwind", "-v0", "install")
     print(f"{INFO}.. Installing pre-commit hooks.{TERMINATOR}")
     run_venv(f"{os.getcwd()}/.venv/bin/pre-commit", "install")
     subprocess.call(["touch", *glob("src/{{ cookiecutter.package_name}}/ui/theme/static/js/*.min.js")])

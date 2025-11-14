@@ -1,4 +1,4 @@
-from .error_pages import handler400, handler403, handler404, handler410, handler500
+from .error_pages import handler400, handler401, handler403, handler404, handler410, handler500
 from .site import HealthCheckView, HomeView
 from .login import LoginView, LogoutView
 
@@ -9,6 +9,7 @@ __all__ = [
     "LoginView",
     "LogoutView",
     "handler400",
+    "handler401",
     "handler403",
     "handler404",
     "handler410",

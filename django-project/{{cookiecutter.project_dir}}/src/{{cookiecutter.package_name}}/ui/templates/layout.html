@@ -1,4 +1,4 @@
-{% load issues static tailwind_tags %}
+{% raw %}{% load issues static tailwind_tags %}
 <html lang="en" data-theme="{{ theme.mode }}" data-size="{{ theme.size }}">
     <head>
         <meta charset="UTF-8" />
@@ -36,4 +36,4 @@
         {% block extra_js %}
         {% endblock extra_js %}
     </body>
-</html>
+</html>{%- endraw %}

@@ -1,4 +1,4 @@
-{% load i18n static %}
+{% raw %}{% load i18n static %}
 <div class="flex items-center ml-auto">
     <div class="flex flex-row group items-center leading-none relative">
         <div class="flex gap-4 items-center">
@@ -10,6 +10,7 @@
             {% endif %}
             {% include "unfold/helpers/language_switch.html" %}
             <a id="issue-opener" href="#">{% trans "Open Issue" %}</a>
+            <a href="{% url 'api:api-root' %}" target="_api">API</a>
             {% include "unfold/helpers/theme_switch.html" %}
             {% include "unfold/helpers/account_links.html" %}
         </div>
@@ -17,4 +18,4 @@
     {% if nav_global_side %}
         {{ nav_global_side }}
     {% endif %}
-</div>
+</div>{%- endraw %}

@@ -44,8 +44,8 @@ UNFOLD = {
     "SITE_SYMBOL": "speed",  # symbol from icon set
     "SITE_URL": "/",
     "SITE_ICON": {
-        "light": lambda request: static("images/img.svg"),  # light mode
-        "dark": lambda request: static("images/img.svg"),  # dark mode
+        "light": lambda request: static("images/hope_logo.png"),  # light mode
+        "dark": lambda request: static("images/hope_logo.png"),  # dark mode
     },
     "STYLES": [
         # lmbda request: static("/css/styles_admin.css"),

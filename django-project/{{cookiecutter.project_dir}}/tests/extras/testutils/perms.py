@@ -1,7 +1,11 @@
+import functools
+import operator
 from contextlib import ContextDecorator
 from random import choice
+from typing import Sequence
 
-from django.contrib.auth.models import Permission
+from django.contrib.auth.models import Group, Permission, User
+from django.db.models import Q
 from faker import Faker
 
 from .factories import GroupFactory
@@ -56,7 +60,7 @@ class user_grant_permissions(ContextDecorator):  # noqa
         "_dss_acl_cache",
     ]
 
-    def __init__(self, user, permissions=None):
+    def __init__(self, user: User, permissions: Sequence[str] | None = None) -> None:
         self.user = user
         if permissions is None:
             permissions = []
@@ -77,6 +81,50 @@ class user_grant_permissions(ContextDecorator):  # noqa
             self.user.groups.remove(self.group)
             self.group.delete()
 
+        if e_typ:
+            raise e_typ(e_val).with_traceback(trcbak)
+
+    def start(self):
+        """Activate a patch, returning any created mock."""
+        return self.__enter__()
+
+    def stop(self):
+        """Stop an active patch."""
+        return self.__exit__(None, None, None)
+
+
+class group_grant_permissions(ContextDecorator):  # noqa
+    caches = [
+        "_group_perm_cache",
+        "_user_perm_cache",
+        "_dsspermissionchecker",
+        "_officepermissionchecker",
+        "_perm_cache",
+        "_dss_acl_cache",
+    ]
+
+    def __init__(self, group: Group, permissions: Sequence[str] | None = None, append: bool = True):
+        self.group = group
+        if permissions is None:
+            permissions = []
+        elif not isinstance(permissions, (list, tuple)):
+            permissions = [permissions]
+        self.existing_permissions = self.group.permissions.values_list("id", flat=True)
+        pairs = [Q(codename=e.split(".")[1], content_type__app_label=e.split(".")[0]) for e in permissions]
+        filters = functools.reduce(operator.or_, pairs)
+        self.permissions = Permission.objects.filter(filters)
+        self.append = append
+
+    def __enter__(self):
+        for cache in self.caches:
+            if hasattr(self.group, cache):
+                delattr(self.group, cache)
+        if not self.append:
+            self.group.permissions.clear()
+        for permission in self.permissions.all():
+            self.group.permissions.add(permission)
+
+    def __exit__(self, e_typ, e_val, trcbak):
         if e_typ:
             raise e_typ(e_val).with_traceback(trcbak)
 

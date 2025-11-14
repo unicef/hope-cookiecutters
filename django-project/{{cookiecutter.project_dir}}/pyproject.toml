@@ -25,7 +25,7 @@ dynamic = [
 dependencies = [
   "celery",
   "django==5.2.*",
-  "django-admin-extra-buttons>=2.1.1",
+  "django-admin-extra-buttons>=2.1.2",
   "django-adminactions>=2.4",
   "django-adminfilters>=2.6",
   "django-celery-boost>=0.6.2",
@@ -35,6 +35,7 @@ dependencies = [
   "django-debug-toolbar",
   "django-filter",
   "django-flags",
+  "django-hijack",
   "django-online-issues[github]>=0.6",
   "django-redis",
   "django-regex",
@@ -44,8 +45,10 @@ dependencies = [
   "django-tailwind>=4.2",
   "django-unfold",
   "djangorestframework",
+  "drf-extensions",
   "drf-spectacular",
   "drf-spectacular-sidecar",
+  "natural-keys",
   "psycopg2-binary",
   "pytz",
   "sentry-sdk",
@@ -105,7 +108,7 @@ docs = [
 
 type-check = [
   "django-stubs[compatible-mypy]",
-  "djangorestframework-stubs",
+  "djangorestframework-stubs[compatible-mypy]",
   "lxml-stubs",
   "mypy",
   "types-defusedxml",

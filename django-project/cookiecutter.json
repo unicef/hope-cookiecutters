@@ -29,6 +29,11 @@
     "docker_image": "{{ cookiecutter.project_title.lower()|replace(' ', '-')|replace('_', '-') }}",
     "_copy_without_render": [
       "src/{{cookiecutter.package_name}}/ui/theme/static/js/*.js",
-      "src/{{cookiecutter.package_name}}/ui/templates/*.html"
+      "src/{{cookiecutter.package_name}}/ui/templates/admin/*.html",
+      "src/{{cookiecutter.package_name}}/ui/templates/admin_extra_buttons/*.html",
+      "src/{{cookiecutter.package_name}}/ui/templates/includes/*.html",
+      "src/{{cookiecutter.package_name}}/ui/templates/registration/*.html",
+      "src/{{cookiecutter.package_name}}/ui/templates/rest_framework/*.html",
+      "src/{{cookiecutter.package_name}}/ui/templates/strategy_field/*.html"
     ]
 }

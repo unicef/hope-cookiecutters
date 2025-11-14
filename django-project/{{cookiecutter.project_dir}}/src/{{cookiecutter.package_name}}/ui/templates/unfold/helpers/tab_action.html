@@ -1,4 +1,4 @@
-{% load unfold %}
+{% raw %}{% load unfold %}
 <li class="{% action_item_classes action %}"
     {% if not link and action.items|length > 0 %}x-data="{actionDropdownOpen: false}" x-ref="actionDropdown{{ action.method_name }}"{% endif %}>
     <a {% if link %}href="{{ link }}"{% endif %}class="cursor-pointer flex grow items-center gap-2 px-3 py-2 text-left whitespace-nowrap" {% if blank %} target="_blank"{% endif %} {% include "unfold/helpers/attrs.html" with attrs=action.attrs %} {% if not link %} x-on:click="actionDropdownOpen = !actionDropdownOpen" x-bind:class="{'
@@ -46,4 +46,4 @@
             </nav>
         </template>
     {% endif %}
-</li>
+</li>{%- endraw %}

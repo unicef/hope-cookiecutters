@@ -1,7 +1,11 @@
+from typing import TypeVar
+
 from factory.base import FactoryMetaClass
 from factory.django import DjangoModelFactory
 
 factories_registry = {}
+
+T = TypeVar("T")
 
 
 class AutoRegisterFactoryMetaClass(FactoryMetaClass):
@@ -11,8 +15,9 @@ class AutoRegisterFactoryMetaClass(FactoryMetaClass):
         return new_class
 
 
-class AutoRegisterModelFactory(DjangoModelFactory, metaclass=AutoRegisterFactoryMetaClass):
-    pass
+class AutoRegisterModelFactory(DjangoModelFactory[T], metaclass=AutoRegisterFactoryMetaClass):
+    def __call__(self, *args, **kwargs) -> T:
+        return super().__call__(*args, **kwargs)
 
 
 def get_factory_for_model(_model):

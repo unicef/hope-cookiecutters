@@ -3,6 +3,7 @@ from django.apps import AppConfig
 
 class Config(AppConfig):
     name = "{{cookiecutter.package_name}}"
+    verbose_name = "{{cookiecutter.project_title}}"
 
     def ready(self) -> None:
         from . import checks  # noqa

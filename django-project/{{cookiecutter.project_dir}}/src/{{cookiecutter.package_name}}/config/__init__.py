@@ -1,5 +1,6 @@
 import os
 import tempfile
+
 from smart_env import SmartEnv
 
 DJANGO_HELP_BASE = "https://docs.djangoproject.com/en/5.2/ref/settings"
@@ -18,6 +19,7 @@ DEFAULTS = {
     "ANYMAIL_REQUESTS_TIMEOUT": (int, 30, 30),
     "ANYMAIL_DEBUG_API_REQUESTS": (bool, False, True),
     "CELERY_BROKER_URL": (str, "redis://localhost:6379/2"),
+    "CELERY_RESULT_BACKEND": (str, "redis://localhost:6379/2"),
     "CELERY_TASK_ALWAYS_EAGER": (bool, False),
     "CONSTANCE_DATABASE_CACHE_BACKEND": (str, ""),
     "CORS_ALLOWED_ORIGINS": (list, []),
@@ -50,6 +52,9 @@ DEFAULTS = {
     "MAILJET_API_URL": (str, "https://api.mailjet.com/v3.1/", "https://api.mailjet.com/v3.1/", False, "Mailjet API"),
     "MAILJET_API_KEY": (str, "", "", False, "Mailjet API key"),
     "MAILJET_SECRET_KEY": (str, "", "", False, "Mailjet API secret key"),
+    "MATOMO_TRACKER_URL": (str, "", "", False, "Matomo Server url"),
+    "MATOMO_SCRIPT_URL": (str, "", "", False, "Matomo script url"),
+    "MATOMO_SITE_ID": (str, "", "", False, "Matomo Site Id"),
     "MEDIA_ROOT": (str, os.path.join(tempfile.gettempdir(), "{{ cookiecutter.package_name }}", "media")),
     "REDIS_CACHE_URL": (str, "redis://localhost:6379/0"),
     "REDIS_LOCK_URL": (str, "redis://localhost:6379/1?backend=django_redis.cache.RedisCache"),

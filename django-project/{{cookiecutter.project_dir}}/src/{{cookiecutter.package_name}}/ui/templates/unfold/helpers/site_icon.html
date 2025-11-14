@@ -1,4 +1,4 @@
-{% load i18n %}
+{% raw %}{% load i18n %}
 {% if site_icon %}
     <div class="shrink-0">
         {% if site_dropdown %}
@@ -28,4 +28,4 @@
             {{ site_subheader }}
         </div>
     {% endif %}
-</div>
+</div>{%- endraw %}

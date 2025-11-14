@@ -3,9 +3,10 @@
     <nav class="grid grid-flow-col gap-4 mb-0">
         <a class="link link-hover" href="{% url 'ui:index' %}">{% trans "About us" %}</a>
         <a class="link link-hover" href="{% url 'ui:index' %}">{% trans "Contact" %}</a>
-        {% flag_enabled "SHOW_ADMIN_LiNK" as show_admin_link %}
+        {% flag_enabled "SHOW_ADMIN_LINK" as show_admin_link %}
         {% if show_admin_link %}
             <a class="link link-hover" href="{% url 'admin:index' %}" target="_admin">{% trans "Admin" %}</a>
+            <a class="link link-hover" href="{% url 'api:api-root' %}" target="_api">{% trans "API" %}</a>
         {% endif %}
     </nav>
     <div class="info-line">

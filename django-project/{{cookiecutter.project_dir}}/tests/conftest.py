@@ -3,7 +3,10 @@ import sys
 import time
 from pathlib import Path
 
+import pytest
 from faker import Faker
+import responses
+from testutils.factories import GroupFactory, UserFactory
 
 faker = Faker()
 
@@ -23,3 +26,19 @@ def pytest_configure(config):
 
     settings.CACHE_PREFIX = str(time.time())
     settings.CSRF_COOKIE_SECURE = False
+
+
+@pytest.fixture
+def mocked_responses():
+    with responses.RequestsMock(assert_all_requests_are_fired=False) as rsps:
+        yield rsps
+
+
+@pytest.fixture
+def user():
+    return UserFactory()
+
+
+@pytest.fixture
+def group():
+    return GroupFactory()

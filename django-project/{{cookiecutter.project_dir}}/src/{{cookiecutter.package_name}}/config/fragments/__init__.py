@@ -6,6 +6,7 @@ from .csp import *  # noqa
 from .flags import *  # noqa
 from .issues import *  # noqa
 from .mail import *  # noqa
+from .matomo import *  # noqa
 from .debug_toolbar import *  # noqa
 from .rest_framework import *  # noqa
 from .sentry import *  # noqa

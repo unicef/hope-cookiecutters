@@ -1,4 +1,4 @@
-{% load admin_urls i18n unfold %}
+{% raw %}{% load admin_urls i18n unfold %}
 {% if show_back_button %}
     {% if object %}
         {% admin_object_app_url object "changelist" as changelist_url %}
@@ -11,4 +11,4 @@
             <span class="material-symbols-outlined">arrow_back</span>
         </a>
     {% endif %}
-{% endif %}
+{% endif %}{%- endraw %}

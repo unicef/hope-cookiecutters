@@ -47,7 +47,7 @@ def run_manage(*args):
 
 def main():
     print(f"{SUCCESS}Project structure created in {os.getcwd()}.{TERMINATOR}")
-    print(f"{SUCCESS}Start setup project.{TERMINATOR}")
+    print(f"{SUCCESS}Start setup project.{TERMINATOR}. Run 'post_gen_project' script.")
     if "{{cookiecutter.use_transifex}}" != "y":
         remove(".tx")
 
@@ -61,7 +61,7 @@ def main():
 
     print(f"{INFO}.. Creating virtualenv.{TERMINATOR}")
     run("uv", "venv", "-q")
-    run("uv", "sync", "-q")
+    run("uv", "sync", "-q", "--all-groups")
 
     print(f"{INFO}.. Generating uv.lock file.{TERMINATOR}")
     run("uv", "lock", "-q")

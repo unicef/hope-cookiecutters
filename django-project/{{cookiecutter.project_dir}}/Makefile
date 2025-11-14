@@ -43,4 +43,4 @@ reset_migrations:  ## reset database migrations. WARNING!!: Use only until first
 	createdb {{cookiecutter.database_name}}
 	./manage.py makemigrations {{cookiecutter.package_name}}
 	git add src/{{cookiecutter.package_name}}/migrations/*
-	./manage.py develop
+	echo "CreateCollation(\"case_insensitive\", provider=\"icu\", locale=\"und-u-ks-level2\", deterministic=True),"

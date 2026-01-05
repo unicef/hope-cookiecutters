@@ -13,5 +13,4 @@ wheels/
 #!django-application/{{cookiecutter.project_dir}}/.idea
 #!python-library/{{cookiecutter.application_dir}}/.idea
 
-# Virtual environments
-.venv
+.*

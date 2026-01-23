@@ -1,7 +1,5 @@
 #!/bin/bash
 set -e
-export NGINX_MAX_BODY_SIZE="${NGINX_MAX_BODY_SIZE:-30M}"
-export NGINX_CACHE_DIR="${NGINX_CACHE_DIR:-/data/nginx/cache}"
 export MEDIA_ROOT="${MEDIA_ROOT:-/var/media}"
 export STATIC_ROOT="${STATIC_ROOT:-/var/static}"
 
@@ -11,17 +9,14 @@ export REDIS_MAXMEMORY_POLICY="${REDIS_MAXMEMORY_POLICY:-volatile-ttl}"
 
 export DOLLAR='$'
 
-mkdir -p /var/run /var/nginx ${NGINX_CACHE_DIR} ${MEDIA_ROOT} ${STATIC_ROOT}
+mkdir -p /var/run ${MEDIA_ROOT} ${STATIC_ROOT}
 echo "created support dirs /var/run '${MEDIA_ROOT}' '${STATIC_ROOT}' "
 echo "Startup command is: '$1'"
 
 case "$1" in
     "run")
-        envsubst < /conf/nginx.conf.tpl > /conf/nginx.conf && /usr/sbin/nginx -tc /conf/nginx.conf
-
         django-admin upgrade --no-input
 
-        /usr/sbin/nginx -c /conf/nginx.conf
         exec uwsgi --ini /conf/uwsgi.ini
 
     ;;

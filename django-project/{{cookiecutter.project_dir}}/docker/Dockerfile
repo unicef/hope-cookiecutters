@@ -5,7 +5,6 @@ ARG BUILD_DATE
 
 RUN set -x \
   && runtimeDeps=" \
-    nginx \
     gettext \
     libmagic1 \
     libxml2 \

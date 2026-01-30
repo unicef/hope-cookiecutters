@@ -51,10 +51,7 @@ $ python -m venv venv
 $ source venv/bin/activate
 ```
 
-These tests are slower and can be run with or without Docker:
-
-- Without Docker: `tests/test_bare.sh` (for bare metal)
-- With Docker: `tests/test_docker.sh`
+These tests are slower and can be run with or without Docker
 
 All arguments to these scripts will be passed to the `cookiecutter` CLI, letting you set options, for example:
 

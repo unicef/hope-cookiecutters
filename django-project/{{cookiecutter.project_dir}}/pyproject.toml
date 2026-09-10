@@ -116,7 +116,6 @@ type-check = [
   "types-html5lib",
   "types-jmespath",
   "types-markdown",
-  "types-psycopg2",
   "types-pygments",
   "types-python-dateutil",
   "types-pytz",

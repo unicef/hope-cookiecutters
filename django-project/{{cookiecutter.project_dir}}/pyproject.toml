@@ -49,7 +49,7 @@ dependencies = [
   "drf-spectacular",
   "drf-spectacular-sidecar",
   "natural-keys",
-  "psycopg2-binary",
+  "psycopg[binary]",
   "pytz",
   "sentry-sdk",
   "social-auth-app-django",

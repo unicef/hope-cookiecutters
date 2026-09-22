@@ -1,3 +1,10 @@
+# Content-Security-Policy (django-csp).
+#
+# `'unsafe-inline'` / `'unsafe-eval'` are still required by the bundled
+# admin/editor/charting assets. Migrating away from them (nonces / hashes,
+# strict CSP) must be done incrementally; start with CONTENT_SECURITY_POLICY
+# in "report-only" mode and monitor before enforcing a stricter policy, see
+# https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
 CONTENT_SECURITY_POLICY = {
     "DIRECTIVES": {
         "default-src": (
@@ -18,6 +25,9 @@ CONTENT_SECURITY_POLICY = {
             "uni-hope-ukr-sr-dev.azurefd.net",
             "uni-hope-ukr-sr-dev.unitst.org",
         ),
+        "frame-src": ["'self'"],
+        "object-src": ["'none'"],
+        "base-uri": ["'self'"],
         "frame-ancestors": ("'self'",),
     }
 }

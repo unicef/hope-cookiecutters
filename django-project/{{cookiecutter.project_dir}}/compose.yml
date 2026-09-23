@@ -55,3 +55,12 @@ services:
     platform: linux/amd64
     <<: [ *env ]
     restart: always
+
+  worker:
+    image: {{cookiecutter.docker_organization}}/{{cookiecutter.docker_image}}:local
+    <<: [ *env ]
+    platform: linux/amd64
+    command: "worker"
+    depends_on:
+      - db
+      - redis

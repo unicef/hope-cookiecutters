@@ -81,7 +81,7 @@ DEFAULTS = {
     ),
     "SESSION_COOKIE_SECURE": (bool, True, False, False, ""),
     "SESSION_COOKIE_AGE": (int, 86400, 86400, False, ""),
-    "SESSION_EXPIRE_AT_BROWSER_CLOSE": (bool, True, True, False, ""),
+    "SESSION_EXPIRE_AT_BROWSER_CLOSE": (bool, False, False, False, ""),
     "SENTRY_ENABLED": (bool, False),
     "STATIC_ROOT": (str, os.path.join(tempfile.gettempdir(), "{{ cookiecutter.package_name }}", "static")),
     "STREAMING_BROKER_URL": (str, "", ""),
